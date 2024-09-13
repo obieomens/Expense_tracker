@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-const Balance = ({balance}) =>{
-    return (
-        <div className="balance">
-            <h2>Your Balance</h2>
-            <h3>${balance.toFixed(2)}</h3>
+export const Balance = ({ transactions }) => {
+  const amounts = transactions.map(transaction => transaction.amount);
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
-        </div>
-    );
-}
-
-export default Balance;
+  return (
+    <div>
+      <h4>Your Balance</h4>
+      <h1>${total}</h1>
+    </div>
+  );
+};

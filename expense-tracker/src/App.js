@@ -1,41 +1,38 @@
-import React, { useState } from 'react';
-import Header from './Components/Header';
-import Balance from './Components/Balance.js';
-import IncomeExpense from './Components/IncomeExpense';
-import TransactionList from './Components/TransactionList';
-import AddTransaction from './Components/AddTransaction';
+import React, { useState, useEffect } from 'react';
+import { Header } from './Components/Header';
+import { Balance } from './Components/Balance';
+import { IncomeExpenses } from './Components/IncomeExpense';
+import { TransactionList } from './Components/TransactionList';
+import { AddTransaction } from './Components/AddTransaction';
 import './styles/App.css';
 
-const App = () => {
-    const [transactions, setTransactions] = useState([]);
+function App() {
+  const [transactions, setTransactions] = useState(() => {
+    // Load saved transactions from local storage
+    const savedTransactions = localStorage.getItem('transactions');
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
+  });
 
-    const calculateIncome = () => {
-        return transactions.filter(t => t.amount > 0).reduce((acc, t) => acc + t.amount, 0);
-    };
+  useEffect(() => {
+    // Save transactions to local storage whenever the transaction list changes
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  }, [transactions]);
 
-    const calculateExpense = () => {
-        return transactions.filter(t => t.amount < 0).reduce((acc, t) => acc + t.amount, 0);
-    };
+  const addTransaction = transaction => {
+    setTransactions([...transactions, transaction]);
+  };
 
-    const handleAddTransaction = (transaction) => {
-        setTransactions([...transactions, transaction]);
-    };
-
-    const handleDeleteTransaction = (id) => {
-        setTransactions(transactions.filter(t => t.id !== id));
-    };
-
-    const balance = calculateIncome() + calculateExpense();
-
-    return (
-        <div className="container">
-            <Header />
-            <Balance balance={balance} />
-            <IncomeExpense income={calculateIncome()} expense={Math.abs(calculateExpense())} />
-            <TransactionList transactions={transactions} onDelete={handleDeleteTransaction} />
-            <AddTransaction onAdd={handleAddTransaction} />
-        </div>
-    );
-};
+  return (
+    <div>
+      <Header />
+      <div className="container">
+        <Balance transactions={transactions} />
+        <IncomeExpenses transactions={transactions} />
+        <TransactionList transactions={transactions} />
+        <AddTransaction addTransaction={addTransaction} />
+      </div>
+    </div>
+  );
+}
 
 export default App;

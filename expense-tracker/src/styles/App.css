@@ -1,58 +1,75 @@
 
-.container {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
 
-.balance, .income-expense, .transaction-list, .add-transaction {
-    margin-bottom: 20px;
-}
-
-.income-expense {
-    display: flex;
-    justify-content: space-between;
-}
-
-.income-expense div {
-    background: #17a589;
-    padding: 10px;
-    border-radius: 5px;
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
-}
-
-.income-expense div:first-child {
-    margin-left: 0;
-}
-
-.income-expense div:last-child {
-    margin-right: 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border-right: 5px solid #2ecc71;
-}
-
-li.minus {
-    border-right-color: #c0392b;
-}
-
-.delete-btn {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    cursor: pointer;
-}
+  
+  /* Income/Expense and Transaction Styles */
+  .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 0 20px;
+  }
+  
+  .balance, .income-expense, .transaction-list, .add-transaction {
+      margin-bottom: 20px;
+  }
+  
+  .income-expense {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+  }
+  
+  .income-expense div {
+      background: #17a589;
+      padding: 10px;
+      border-radius: 5px;
+      flex: 1;
+      margin: 10px; /* Space on smaller screens */
+      text-align: center;
+  }
+  
+  ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  li {
+      display: flex;
+      justify-content: space-between;
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      border-right: 5px solid #2ecc71;
+  }
+  
+  li.minus {
+      border-right-color: #c0392b;
+  }
+  
+  .delete-btn {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+  }
+  
+  .category {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 600px) {
+      .income-expense div {
+          flex: 1 1 100%;
+          margin: 5px 0; /* Stack items vertically on small screens */
+      }
+  
+      li {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+  }
+  
