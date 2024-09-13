@@ -3,7 +3,7 @@ import { useState } from "react";
 export const AddTransaction = ({ addTransaction }) => {
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
-    const [category, setCategory] = useState('Food'); // Default category
+    const [category, setCategory] = useState('Food');
   
     const onSubmit = e => {
       e.preventDefault();
