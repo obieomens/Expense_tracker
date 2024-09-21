@@ -4,6 +4,7 @@ import { Balance } from './Components/Balance';
 import { IncomeExpenses } from './Components/IncomeExpense';
 import { TransactionList } from './Components/TransactionList';
 import { AddTransaction } from './Components/AddTransaction';
+import {TransactionItem} from './Components/TransactionItem';
 import './styles/App.css';
 
 function App() {
@@ -22,13 +23,20 @@ function App() {
     setTransactions([...transactions, transaction]);
   };
 
+  const deleteTransaction = (id) => {
+    setTransactions(transactions.filter(transaction => transaction.id !== id));
+  };
+
+
+  
+
   return (
     <div>
       <Header />
       <div className="container">
         <Balance transactions={transactions} />
         <IncomeExpenses transactions={transactions} />
-        <TransactionList transactions={transactions} />
+        <TransactionList transactions={transactions} onDelete={deleteTransaction} />
         <AddTransaction addTransaction={addTransaction} />
       </div>
     </div>

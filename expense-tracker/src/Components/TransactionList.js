@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import TransactionItem from './TransactionItem'; // Import TransactionItem
 
-export const TransactionList = ({ transactions }) => {
+export const TransactionList = ({ transactions, onDelete }) => {
   const [filterCategory, setFilterCategory] = useState('All');
 
   const filteredTransactions = filterCategory === 'All' ? transactions : transactions.filter(transaction => transaction.category === filterCategory);
@@ -19,9 +20,11 @@ export const TransactionList = ({ transactions }) => {
       </select>
       <ul className="list">
         {filteredTransactions.map(transaction => (
-          <li key={transaction.id}>
-            {transaction.text} <span>{transaction.amount < 0 ? '-' : '+'}${Math.abs(transaction.amount)}</span> ({transaction.category})
-          </li>
+          <TransactionItem 
+            key={transaction.id} 
+            transaction={transaction} 
+            onDelete={onDelete}
+          />
         ))}
       </ul>
     </>
