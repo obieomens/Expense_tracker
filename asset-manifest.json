@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/XpensTracker/static/css/main.559ec0a6.css",
+    "main.js": "/XpensTracker/static/js/main.73663797.js",
+    "static/js/453.50385a13.chunk.js": "/XpensTracker/static/js/453.50385a13.chunk.js",
+    "static/media/background.jpg": "/XpensTracker/static/media/background.af600ca2cf22da527b57.jpg",
+    "index.html": "/XpensTracker/index.html",
+    "main.559ec0a6.css.map": "/XpensTracker/static/css/main.559ec0a6.css.map",
+    "main.73663797.js.map": "/XpensTracker/static/js/main.73663797.js.map",
+    "453.50385a13.chunk.js.map": "/XpensTracker/static/js/453.50385a13.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.559ec0a6.css",
+    "static/js/main.73663797.js"
+  ]
+}
